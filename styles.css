@@ -135,26 +135,6 @@ body {
     box-shadow: 0 0 20px var(--neon-blue);
 }
 
-.cyber-button:disabled {
-    opacity: 0.7;
-    cursor: wait;
-}
-
-.loading-indicator {
-    display: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--neon-blue);
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: spin 1s linear infinite;
-    margin-left: 10px;
-}
-
-.cyber-button:disabled .loading-indicator {
-    display: inline-block;
-}
-
 .dream-card {
     background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
     border: 2px solid var(--neon-pink);
@@ -208,8 +188,4 @@ body {
     50% {
         transform: translateY(-10px);
     }
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }

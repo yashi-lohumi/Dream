@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const generateDream = async () => {
+    const generateDream = () => {
         const selectedTypes = Array.from(document.querySelectorAll('.ingredient.selected'))
             .map(el => el.dataset.type);
 
@@ -68,96 +68,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Show loading state
-        generateButton.disabled = true;
-        generateButton.textContent = 'Generating Dream...';
-
-        try {
-            const description = await fetchDreamStory(selectedTypes);
-            const titles = selectedTypes.flatMap(type => dreamTemplates[type]);
-            const randomTitle = titles[Math.floor(Math.random() * titles.length)];
-
-            // Store dream data in localStorage
-            localStorage.setItem('dreamData', JSON.stringify({
-                title: randomTitle,
-                description: description,
-                elements: selectedTypes,
-                date: new Date().toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                })
-            }));
-
-            // Redirect to dream card page
-            window.location.href = 'dreamcard.html';
-        } catch (error) {
-            alert('Failed to generate dream story. Using backup generator...');
-            const description = generateBackupDescription(selectedTypes);
-            
-            // Store dream data in localStorage
-            localStorage.setItem('dreamData', JSON.stringify({
-                title: randomTitle,
-                description: description,
-                elements: selectedTypes,
-                date: new Date().toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                })
-            }));
-
-            // Redirect to dream card page
-            window.location.href = 'dreamcard.html';
-        } finally {
-            generateButton.disabled = false;
-            generateButton.textContent = 'Generate Dream';
-        }
-    };
-
-    const fetchDreamStory = async (types) => {
-        const prompt = buildDreamPrompt(types);
+        const titles = selectedTypes.flatMap(type => dreamTemplates[type]);
+        const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+        const description = generateDreamDescription(selectedTypes);
         
-        // Using Hugging Face API
-        const response = await fetch('https://api-inference.huggingface.co/models/gpt2', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
-            },
-            body: JSON.stringify({
-                inputs: prompt,
-                parameters: {
-                    max_length: 150,
-                    temperature: 0.7,
-                    return_full_text: false,
-                    num_return_sequences: 1
-                }
+        // Store dream data in localStorage
+        localStorage.setItem('dreamData', JSON.stringify({
+            title: randomTitle,
+            description: description,
+            elements: selectedTypes,
+            date: new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
             })
-        });
+        }));
 
-        if (!response.ok) {
-            throw new Error('API request failed');
-        }
-
-        const data = await response.json();
-        
-        // Handle Hugging Face response format
-        if (Array.isArray(data) && data.length > 0) {
-            return data[0].generated_text.trim();
-        } else {
-            throw new Error('Invalid response format');
-        }
+        // Redirect to dream card page
+        window.location.href = 'dreamcard.html';
     };
 
-    const buildDreamPrompt = (types) => {
-        const year = Math.floor(Math.random() * (2080 - 2070) + 2070);
-        const elements = types.join(', ');
-        return `Generate a futuristic cyberpunk story in ${year} about ${elements}. Story should be imaginative and contain advanced technology. Keep it under 3 sentences.`;
-    };
-
-    const generateBackupDescription = (types) => {
-        // Use existing generation logic as backup
+    const generateDreamDescription = (types) => {
         const year = Math.floor(Math.random() * (2080 - 2070) + 2070);
         let story = `In the year ${year}, `;
 
