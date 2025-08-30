@@ -20,21 +20,19 @@ Choose your dream ingredients, then watch as the app generates a **unique dream 
 
 ## 🚀 How to Run
 1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/yourusername/DreamDesigner2070.git
 2. Open the folder and launch index.html in your browser.
 3. Select your dream ingredients → click Generate Dream.
 You’ll be redirected to your Dream Card.
 
 ## 🖼️Example Output
-Selected Ingredients: Space, Mystery
-Generated Dream:
+- Selected Ingredients: Space, Mystery
+- Generated Dream:
 In 2070, you explore the neon-lit depths of the cosmos where strange anomalies hide a forgotten civilization...
 
 ## 🔮 Future Scope
-Integrate real AI story generation (Hugging Face / OpenAI).
-Add futuristic avatars, music & animations.
-Allow users to export/share dream cards.
+- Integrate real AI story generation (Hugging Face / OpenAI).
+- Add futuristic avatars, music & animations.
+- Allow users to export/share dream cards.
 
 ## 📜 License
 MIT License – free to use and modify.
