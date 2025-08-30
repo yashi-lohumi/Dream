@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Designer 2070</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="cyber-title">Dream Designer 2070</h1>
+        <div class="ingredients-panel">
+            <p class="ingredients-description">Select ingredients you want to add in your next dream (max 3)</p>
+            <div class="ingredients-grid">
+                <div class="ingredient" data-type="space" data-emoji="🌌">Space</div>
+                <div class="ingredient" data-type="ocean" data-emoji="🌊">Ocean</div>
+                <div class="ingredient" data-type="romance" data-emoji="💖">Romance</div>
+                <div class="ingredient" data-type="flying" data-emoji="✈️">Flying</div>
+                <div class="ingredient" data-type="mystery" data-emoji="🔮">Mystery</div>
+                <div class="ingredient" data-type="adventure" data-emoji="🎮">Adventure</div>
+            </div>
+            <p class="ingredients-counter">Selected: <span id="ingredientCount">0</span>/3</p>
+            <button id="generateDream" class="cyber-button">
+                Generate Dream
+                <span class="loading-indicator"></span>
+            </button>
+        </div>
+        <div class="dream-card" id="dreamCard">
+            <h3 id="dreamTitle"></h3>
+            <p id="dreamDescription"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
