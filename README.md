@@ -11,11 +11,11 @@ Choose your dream ingredients, then watch as the app generates a **unique dream 
 - 🎭 **Randomized Stories** – Every selection feels new & fun.  
 
 ## 📂 Project Structure
-index.html # Main app UI (ingredient selection + button)
-style.css # Styling (cyberpunk-inspired theme)
-script.js # Core logic (selection + story generation)
-dreamcard.html # Displays the generated dream story card
-README.md # Project documentation
+- index.html- Main app UI (ingredient selection + button)
+- style.css- Styling (cyberpunk-inspired theme)
+- script.js- Core logic (selection + story generation)
+- dreamcard.html- Displays the generated dream story card
+- README.md- Project documentation
 
 
 ## 🚀 How to Run
